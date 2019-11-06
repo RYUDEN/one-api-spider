@@ -75,7 +75,7 @@ app.get('/today',async function(req,res){
 //     }
 // })
 
-app.listen(2333, ()=> {
+app.listen(2334, ()=> {
 console.log(`server running @ http://localhost:${2333}`);
 })
 
