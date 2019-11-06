@@ -79,15 +79,23 @@ const getQuestion = async id => {
     const askers  = $('.text-askers').text().replace(/\r/g,'').replace(/\s/g,'');
     const answers = $('.text-answers').text().replace(/\r/g,'').replace(/\s/g,'');
     const content = $('.text-content').eq(1).html();
+    const pre = 
+    JSON.parse(spt.match(/previousPageUrl\=(\S*)\;/)[1])&&
+    JSON.parse(spt.match(/previousPageUrl\=(\S*)\;/)[1])
+    .match(/\/article\/(\S*)/)[1]
+    const next =
+        JSON.parse(spt.match(/nextPageUrl\=(\S*)\;/)[1])&&
+        JSON.parse(spt.match(/nextPageUrl\=(\S*)\;/)[1])
+        .match(/\/article\/(\S*)/)[1];
 
     return (
-        {title, askers, answers, content: entities.decode(content).replace(/\r/g,'').replace(/\s/g,'')}
+        {title, askers, answers,pre,next, content: entities.decode(content).replace(/\r/g,'').replace(/\s/g,'')}
     )
 }
 
 const getToday = async () => {
     const res = await service({
-        url:`http://wufazhuce.com/`,
+        url:`http://wufazhuce.com/`, 
         method:'get' 
     })
     if (!res) {
