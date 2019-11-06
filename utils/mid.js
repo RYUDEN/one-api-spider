@@ -80,13 +80,13 @@ const getQuestion = async id => {
     const answers = $('.text-answers').text().replace(/\r/g,'').replace(/\s/g,'');
     const content = $('.text-content').eq(1).html();
     const pre = 
-    JSON.parse(spt.match(/previousPageUrl\=(\S*)\;/)[1])&&
-    JSON.parse(spt.match(/previousPageUrl\=(\S*)\;/)[1])
-    .match(/\/article\/(\S*)/)[1]
+    JSON.parse(spt.match(/previousPageUrl\s\=\s(\S*)\;/)[1])&&
+    JSON.parse(spt.match(/previousPageUrl\s\=\s(\S*)\;/)[1])
+    .match(/\/question\/(\S*)/)[1]
     const next =
-        JSON.parse(spt.match(/nextPageUrl\=(\S*)\;/)[1])&&
-        JSON.parse(spt.match(/nextPageUrl\=(\S*)\;/)[1])
-        .match(/\/article\/(\S*)/)[1];
+        JSON.parse(spt.match(/nextPageUrl\s\=\s(\S*)\;/)[1])&&
+        JSON.parse(spt.match(/nextPageUrl\s\=\s(\S*)\;/)[1])
+        .match(/\/question\/(\S*)/)[1];
 
     return (
         {title, askers, answers,pre,next, content: entities.decode(content).replace(/\r/g,'').replace(/\s/g,'')}
