@@ -3,7 +3,7 @@
 const express = require('express')  //服务器模块
 const fs = require('fs')
 const apicache = require("apicache");
-const { getOne, getArticle, getQuestion, getToday, search } = require('./utils/mid')
+const { getOne, getArticle, getQuestion, getToday, search, getCouplet } = require('./utils/mid')
 const app = express();
 const cache = apicache.middleware;
 
@@ -65,6 +65,17 @@ app.get('/today',async function(req,res){
     res.send(new TempRes(200,'ok',result))
 })
 
+app.get('/getCouplet', async function(req, res){
+    console.log(req.query)
+    if(req.query.keyword){
+        // getOne(req.query.id)
+        const result = await getCouplet(encodeURI(req.query.keyword))
+        res.send(new TempRes(200,'ok',result))
+    }
+    else{
+        res.send(new TempRes(401,'not ok',{}))
+    }
+})
 // app.get('/search',async function(req,res){
 //     const { kw, page, type } = req.query;
 //     if(kw!==''){

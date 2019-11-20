@@ -1,5 +1,6 @@
 const cheerio = require('cheerio')
 const service = require('./http')
+const axios = require('axios')
 const Entities = require('html-entities').XmlEntities;//处理HTML文档被转码
 const qs = require('querystring');
 const entities = new Entities();
@@ -192,4 +193,12 @@ const search = async (query, type) => {
         page
     })
 }
-module.exports = { getOne, getArticle, getQuestion, getToday, search }
+
+const getCouplet = async keyword => {
+    const res = await service({
+        url:`https://ai-backend.binwang.me/chat/couplet/${keyword}`,
+        method:'get'
+    })
+    return res
+}
+module.exports = { getOne, getArticle, getQuestion, getToday, search, getCouplet }
