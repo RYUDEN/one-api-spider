@@ -1,7 +1,7 @@
 const axios = require('axios');  //请求处理
 
-// const BASEURL = 'http://m.wufazhuce.com/';
-const BASEURL = 'https://m.kuaidi100.com';
+const BASEURL = 'http://m.wufazhuce.com/';
+// const BASEURL = 'https://m.kuaidi100.com';
 
 const service  = axios.create({
     baseURL:BASEURL,
